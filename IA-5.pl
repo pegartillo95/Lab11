@@ -24,7 +24,7 @@ pregunta:-
 ejecucion(F,V):- preg(V,F,[]).
 
 preg(Value) --> introduccion(Genero), atributo(Atrib,Genero), unions_1, nombre(Atrib,Value).
-preg(Value) --> introduccion(Genero), atributo(Atrib,Genero), unions_2, nombre(Atrib,Value).
+preg(Value) --> introduccion_2(Genero), atributo(Atrib,Genero), unions_2, nombre(Atrib,Value).
 
 % ------------------------------------------------------------------
 % Reglas para las preguntas que devuelven un solo valor:
@@ -45,9 +45,8 @@ nombre(Atrib,Value) --> [N],
 %----------------------------------------------------------------------------------------
 %  LISTA DE UNIONES
 %----------------------------------------------------------------------------------------
-unions_1 --> [de].
+%Los dos grupos de uniones segun el tipo de introduccion
 unions_1 --> [tiene].
-
 unions_2 --> [de].
 
 
@@ -62,12 +61,12 @@ atributo(factoria,fem).
 %----------------------------------------------------------------------------------------
 %  LISTA DE INTRODUCCIONES
 %----------------------------------------------------------------------------------------
-introduccion(masc) --> [que]. 
-introduccion(fem) --> [que].
-introduccion(masc) --> [dime,el].
-introduccion(fem) --> [dime, la].
-introduccion(masc) --> [cual,es,el].
-introduccion(fem) --> [cual,es, la].
+
+%Separado en introduccion y introduccion_2 porque cada uno de ellos usa diferentes uniones.
+introduccion(_) --> [que].
+
+introduccion_2(masc) --> [dime,el] ; [cual,es,el].
+introduccion_2(fem) --> [dime, la] ; [cual,es, la].
 
 
 %----------------------------------------------------------------------------------------

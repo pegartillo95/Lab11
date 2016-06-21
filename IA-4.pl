@@ -20,7 +20,6 @@ transformacion([Objeto,Ser,Participio,por,Suj_P,Prep,Compl]) --> grupo_nom(Per,N
 %transformacion([Det_2,Sust_2,Ser,Participio,por,Det_1,Sust_1]) --> grupo_nom_l(Per,Num,_,Det_1,Sust_1), verbo(Per,Num,Per2,Gen2,Num2,Ser,Participio),grupo_nom_l(Per2,Num2,Gen2,Det_2,Sust_2).
 
 
-
 complemento(Prep,Compl) --> preposicion(Prep), grupo_nom(_,_,_,Compl,_).
 
 grupo_nom(3,sing,Gen,N,N) --> [N],
@@ -57,7 +56,7 @@ verbo(Per,Num,Per2,Gen2,Num2,Prep,Ser,Participio) --> [V],
 	atom_concat(Raiz, Part, Participio)
 }.
 
-%si en la posicion de la prep ponemos todas
+%si en la posicion de la prep ponemos todas significa que el verbo acepta todas las preposiciones, dara por valida sea la que sea.
 verbo(Per,Num,Per2,Gen2,Num2,[_],Ser,Participio) --> [V],
 {
 	atom_concat(Raiz, Morfema, V),
